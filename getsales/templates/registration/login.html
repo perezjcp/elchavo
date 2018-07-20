@@ -1,0 +1,86 @@
+
+{% block content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+
+{% if form.errors %}
+<p class = "text">Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Your account doesn't have access to this page. To proceed,
+    please login with an account that has access.</p>
+    {% else %}
+    {% endif %}
+{% endif %}
+
+<div class="container">
+        <div class="row">
+            <h2>El Chavo Login</h2>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+    <div class="row">
+                <form class="sa-innate-form" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+
+                        <table>
+                                <tr>
+                                    <td style="padding: 5px">Usuario</td>
+                                    <td>{{ form.username }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 5px">Contraseña</td>
+                                    <td>{{ form.password }}</td>
+                                </tr>
+                                </table>
+                                <input style="color: blue"type="submit" value="Ingresar" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+        
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+
+
+{# Assumes you setup the password_reset view in your URLconf #}
+
+{% endblock %}
+
+
+<!--
+
+        <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="container" style="width: 320px; border-style: dashed; padding: 5px; background-color: orange">
+                    <p><b>Igresa tus datos para ingresar a El Chavo.</b></p>
+                
+                    <table>
+                    <tr>
+                        <td style="padding: 5px">Usuario</td>
+                        <td>{{ form.username }}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 5px">Contraseña</td>
+                        <td>{{ form.password }}</td>
+                    </tr>
+                    </table>
+                    <input style="color: blue"type="submit" value="Ingresar" />
+                    <input type="hidden" name="next" value="{{ next }}" />
+                
+                </div>
+                </form>
+-->
+                

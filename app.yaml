@@ -1,0 +1,10 @@
+runtime: python36
+api_version: 1
+
+handlers:
+- url: /
+  static_files: mysite/getsales/templates/getsales/index.html
+  upload: mysite/getsales/templates/getsales/index.html
+
+- url: /
+  static_dir: mysite

@@ -1,0 +1,16 @@
+{% extends "getsales/base.html" %}
+{% load humanize %}
+
+{% block body %}
+
+    <h1>Venta Ingresada</h1>
+    <p>Fecha: {{sales.date}}</p>
+    <p>Venta Efectivo: {{sales.cash_sales|intcomma}}</p>
+    <p>Venta Credito: {{sales.credit_sales|intcomma}}</p>
+    <p>Ahorro: {{sales.savings|intcomma}}</p>
+    <p>Tips: {{sales.tips|intcomma}}</p>
+    <p>Gastos Efectivo: {{sales.cash_exp|intcomma}}</p>
+    <p>Pagos Efectivo: {{sales.cash_pay|intcomma}}</p>
+    <p>Notas: {{sales.notes}}</p>
+
+{% endblock %}

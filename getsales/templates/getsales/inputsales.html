@@ -1,0 +1,74 @@
+{% extends "getsales/base.html" %}
+
+{% block body %}
+<div class="container-fluid">
+    <h1>Ingresar Ventas </h1>
+    <form id="myform" action="{% url 'update' %}" method = "post", role="form">
+      {% csrf_token %}
+            {% if error %}
+            {{error}}
+            {% endif %}
+            <div style="width: 75%">
+                <label for="date">Fecha:</label>
+                <input class="form-control" id="myDate" type="date" name = "date">
+                <!--
+            <small id="emailHelp" class="form-text text-muted">Ingresar Fecha.</small>
+            -->
+            </div>
+            <div style="width: 75%">
+                    <label for="cash_sales">Ventas Efectivo:</label>
+                    <input class="form-control" type="decimal" step="any" name = "cash_sales">
+            </div>
+            <div style="width: 75%">
+                    <label for="credit_sales">Ventas Credito:</label>
+                    <input class="form-control" type="decimal" name = "credit_sales">
+            </div>
+            <div style="width: 75%">
+                    <label for="savings">Ahorros</label>
+                    <input class="form-control"  type="decimal" name = "savings">
+            </div>
+            <div style="width: 75%">
+                    <label for="tips">Propinas:</label>
+                    <input class="form-control" type="decimal" name = "tips">
+            </div>
+            <div style="width: 75%">
+                    <label for="cash_exp">Gastos Efectivo:</label>
+                    <input class="form-control" id="myDate" type="decimal" name = "cash_exp">
+            </div>
+            <div style="width: 75%">
+                    <label for="cash_pay">Gastos Nomina:</label>
+                    <input class="form-control" id="myDate" type="decimal" name = "cash_pay">
+            </div>
+            <div style="width: 75%">
+                    <label for="notes">Notas:</label>
+                    <textarea class="form-control" rows="3" name = "notes"></textarea>
+            </div>
+        </div>
+
+
+  
+            <!--    
+            Fecha: <input id="myDate" type="date" name = "date"><br><br>
+            
+            Ventas Efectivo: <input type="decimal" name ="cash_sales"><br><br>
+            Ventas Credito: <input type="decimal" name ="credit_sales"><br><br>
+            Ahorros: <input type="decimal" name = "savings"><br><br>
+            Tips: <input type="decimal" name ="tips"><br><br>
+            Gastos Efectivo: <input type="decimal" name ="cash_exp"><br><br>
+            Pagos Efectivo: <input type="decimal" name ="cash_pay"><br><br>
+            -->
+
+            <button class="btn btn-primary" type="Submit">Ingresar Datos</button>
+    </form>
+    <script>
+            $(document).ready(function(){
+                var d = new Date();
+                var mm = d.getMonth() + 1;
+                var dd = d.getDate();
+                var yy = d.getFullYear();
+                document.getElementById('myDate').defaultValue = new Date().toISOString().substr(0, 10);
+            });
+    </script>
+    
+
+{% endblock %}

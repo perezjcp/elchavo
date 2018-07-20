@@ -1,0 +1,45 @@
+{% extends "getsales/base.html" %}
+{% load humanize %}
+{% block body %}
+    <h1> Ventas </h1>
+     <table style="width: 100%">
+            <tr>
+                    <th>Fecha</th>
+                     <th>Efectivo</th> 
+                    <th>Tarjetas</th>
+                    <th>Propina</th>
+                    <th>Ahorro</th>
+                    <th>Gasto Ef</th>
+                    <th>Gasto Nom</th>
+                    <th>Notas</th>
+            </tr>
+       {% for sale in sales %}
+       <tr style="border: 1px solid black">
+        <td>{{sale.date}}</td>
+        <td>{{sale.cash_sales|intcomma}}</td> 
+        <td>{{sale.credit_sales|intcomma}}</td>
+        <td>{{sale.tips|intcomma}}</td>
+        <td>{{sale.savings|intcomma}}</td>
+        <td>{{sale.cash_exp|intcomma}}</td>
+        <td>{{sale.cash_pay|intcomma}}</td>
+        <td>{{sale.notes|intcomma}}</td>
+       </tr>
+
+        {% empty %}
+        <div>Ninguna venta registrada</div>
+        {% endfor %}
+        <tfoot style="color: blue">    
+            <tr>
+                <td>Totals</td>
+                <td>{{tcash_sales.cash_sales__sum|intcomma}}</td> 
+                <td>{{tcredit_sales.credit_sales__sum|intcomma}}</td>
+                <td>{{ttips.tips__sum|intcomma}}</td>
+                <td>{{tsavings.savings__sum|intcomma}}</td>
+                <td>{{tcash_exp.cash_exp__sum|intcomma}}</td>
+                <td>{{tcash_pay.cash_pay__sum|intcomma}}</td>
+            </tr>
+        </tfoot>
+
+    </table>
+
+{% endblock %}

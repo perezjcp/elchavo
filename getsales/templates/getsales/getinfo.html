@@ -1,0 +1,97 @@
+{% extends "getsales/base.html" %}
+
+{% block body %}
+    <h2> Selecciona Periodo</h2>
+    <form id = "input_form" action="{% url 'msales' %}" method = "post">
+            {% csrf_token %}
+            <input type = "radio" name = "period" value ="month"/> Mes
+            <input type = "radio" name = "period" value = "year"/> Año
+            <input type = "radio" name = "period" value = "date"/> Dia
+            <p></p>
+            <div id="inputinfo">
+                <br>
+                <div id="full_date"> 
+                    <input  type = "date" name = "date">
+                    <input id="submit" type="Submit">
+                </div>
+                <div id="myMonth" name = "month">Selecciona Mes
+                    <select name = "month" value="0">
+                        <option value="0">Mes</option>
+                        <option value="1">Enero</option>
+                        <option value="2">Febrero</option>
+                        <option value="3">Marzo</option>
+                        <option value="4">Abril</option>
+                        <option value="5">Mayo</option>
+                        <option value="6">Junio</option>
+                        <option value="7">Julio</option>
+                        <option value="8">Agosto</option>
+                        <option value="9">Septiembre</option>
+                        <option value="10">Octubre</option>
+                        <option value="11">Noviembre</option>
+                        <option value="12">Diciembre</option>
+
+                    </select>
+                    <select name = "year" value="0">
+                            <option value="0">Año</option>
+                            <option value="2017">2017</option>
+                            <option value="2018">2018</option>
+                        </select>
+                    <input type = "submit" value="Select">
+                </div> 
+                <div id="myYear" name="year">Selecciona Año
+                    <select name = "year" value="0">
+                        <option value="0">Año</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                    </select>
+                    <input type = "submit" value="Select">
+
+                </div> 
+            </div>
+    </form>
+    <script> 
+              $(document).ready(function(){
+                    $("#inputinfo").hide();
+                    var rating = $('#input_form input:radio[name=period]');
+                    rating.change(function(){
+                        var value = this.value;
+                        $("#inputinfo").hide();
+                        showInput(value);
+                    });
+                    function showInput(value) {
+                        if (value=="date"){
+                            $("#inputinfo").show();
+                            $("#myMonth").hide();
+                            $("#myYear").hide();
+                            $("#full_date").show();
+
+
+                        }
+                        if (value =="month") {
+
+                            $("#inputinfo").show();
+                            $("#myMonth").show();
+                            $("#myYear").hide();
+                            $("#full_date").hide();
+                        }
+                        if (value =="year") {
+
+                            $("#inputinfo").show();
+                            $("#myMonth").hide();
+                            $("#myYear").show();
+                            $("#full_date").hide();
+
+
+                        }
+
+                    };
+                });
+      
+
+    </script>
+{% endblock %}
+
+
+
+
+  
